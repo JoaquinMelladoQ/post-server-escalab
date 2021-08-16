@@ -1,24 +1,20 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoos.Schema;
+const { ObjectId } = mongoose.Schema;
 
-const postSchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
 	{
 		author: {
-			type: ObjectId,
+			type: Object,
 			ref: "User",
 		},
 		body: {
 			type: String,
-			minLength: [1, "Your post must contain more content"],
+			minLength: [1, "This is too short, try to comment with more content"],
 			maxLength: [150, "You cannot exceed 150 characters"],
 		},
-		comment: {
+		post: {
 			type: ObjectId,
-			ref: "Comment",
-		},
-		share: {
-			type: ObjectId,
-			ref: "Share",
+			ref: "Post",
 		},
 		slug: {
 			type: String,
@@ -30,4 +26,4 @@ const postSchema = new mongoose.Schema(
 	{ timestamp: true }
 );
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model("Comment", commentSchema);
