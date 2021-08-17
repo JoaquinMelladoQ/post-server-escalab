@@ -3,12 +3,12 @@ const router = express.Router();
 
 const { authCheck, adminCheck } = require("../middlewares/auth");
 
-const { create, read, update, list } = require("../controllers/comment");
+const { create, read, update, list, remove } = require("../controllers/comment");
 
-router.post("/post/comment", authCheck, adminCheck, create);
-router.get("/post/comments", list);
-router.get("/post/comment/:slug", read);
-router.put("/post/comment/:slug", authCheck, adminCheck, update);
-router.delete("/post/comment/:slug", authCheck, adminCheck);
+router.post("/:slug/comment", create);
+router.get("/:slug/comments", list);
+router.get("/:slug/comment/:slug", read);
+router.put("/:slug/comment/:slug", update);
+router.delete("/:slug/comment/:slug", remove);
 
 module.exports = router;

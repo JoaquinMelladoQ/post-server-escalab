@@ -5,10 +5,10 @@ const { authCheck, adminCheck } = require("../middlewares/auth");
 
 const { create, read, update, list, remove } = require("../controllers/post");
 
-router.post("/post", authCheck, adminCheck, create);
+router.post("/post", create);
 router.get("/posts", list);
 router.get("/post/:slug", read);
-router.put("/post/:slug", authCheck, adminCheck, update);
-router.delete("/post/:slug", authCheck, adminCheck, remove);
+router.put("/post/:slug", update);
+router.delete("/post/:slug", remove);
 
 module.exports = router;
