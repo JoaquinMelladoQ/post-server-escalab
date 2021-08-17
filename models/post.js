@@ -11,14 +11,11 @@ const postSchema = new mongoose.Schema(
 			type: String,
 			minLength: [1, "Your post must contain more content"],
 			maxLength: [150, "You cannot exceed 150 characters"],
+			required: true,
 		},
 		comment: {
 			type: ObjectId,
 			ref: "Comment",
-		},
-		share: {
-			type: ObjectId,
-			ref: "Share",
 		},
 		slug: {
 			type: String,
