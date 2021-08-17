@@ -45,7 +45,7 @@ exports.update = async (req, res) => {
 	}
 };
 
-exports.delete = async (req, res) => {
+exports.remove = async (req, res) => {
 	try {
 		const deleted = await Post.findOneAndDelete({ slug: req.params.slug })	
 		res.json(deleted);
